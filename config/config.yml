@@ -1,0 +1,25 @@
+# Analysis parameters. Every script reads this file, so changing a threshold
+# here changes it everywhere without touching the code.
+
+array: EPIC            # EPIC (v1, hg19 annotation) or EPICv2 (hg38 annotation)
+
+paths:
+  samplesheet: config/samplesheet.csv
+  idat_dir: data/idats
+  results_dir: results
+
+qc:
+  sample_detp_max: 0.05   # drop samples whose mean detection p-value is above this
+  probe_detp_max: 0.01    # keep probes detected (p < this) in every sample
+
+filtering:
+  remove_sex_chromosomes: true
+  remove_snp_probes: true
+  remove_cross_reactive: true
+
+dmp:
+  group_column: Sample_Group
+  block_column: Mouse          # samples sharing a value are treated as correlated
+  contrast: Metastasis - Primary
+  fdr_max: 0.05
+  min_abs_delta_beta: 0.2
