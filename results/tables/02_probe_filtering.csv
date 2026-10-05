@@ -1,0 +1,7 @@
+"filter","removed","remaining"
+"Probes after normalization",NA,865859
+"Detection p >= 0.01 in any sample",2186,863673
+"Non-CpG probes (ch.*)",2931,860742
+"Sex chromosomes (chrX, chrY)",19102,841640
+"SNP at CpG or single-base extension site",29710,811930
+"Cross-reactive probes",39370,772560
