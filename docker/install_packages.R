@@ -13,7 +13,7 @@ pkgs <- c(
   "IlluminaHumanMethylationEPICv2manifest",
   "IlluminaHumanMethylationEPICv2anno.20a1.hg38",
   # utilities and figures
-  "yaml", "ggplot2", "ComplexHeatmap"
+  "yaml", "ggplot2", "ComplexHeatmap", "circlize"
 )
 
 BiocManager::install(pkgs, ask = FALSE, update = FALSE, Ncpus = parallel::detectCores())
