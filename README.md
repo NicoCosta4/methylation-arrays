@@ -1,5 +1,7 @@
 # methylation-arrays
 
+[![Docker image](https://github.com/NicoCosta4/methylation-arrays/actions/workflows/docker-image.yml/badge.svg)](https://github.com/NicoCosta4/methylation-arrays/actions/workflows/docker-image.yml)
+
 Reproducible analysis of Illumina Infinium DNA methylation arrays (EPIC / EPICv2) with R and Bioconductor, packaged in a Docker container: from raw IDAT files to differentially methylated CpGs and publication-ready figures.
 
 ## Example dataset
@@ -46,6 +48,23 @@ done
 ```
 
 Results are written to `results/` (tables and figures) and `results/rds/` (intermediate R objects, not versioned).
+
+### Pre-built image (x86_64, e.g. HPC clusters)
+
+Every change to the environment is built by GitHub Actions and published to the GitHub Container Registry, so there is no need to build it yourself on Linux servers:
+
+```bash
+docker pull ghcr.io/nicocosta4/methylation-arrays:latest
+```
+
+On clusters with Singularity/Apptainer instead of Docker, convert it once and run each step from the repository root:
+
+```bash
+singularity pull methylation-arrays.sif docker://ghcr.io/nicocosta4/methylation-arrays:latest
+singularity exec methylation-arrays.sif Rscript scripts/01_qc.R
+```
+
+The published image is `linux/amd64` only; on Apple Silicon, build it locally as shown above.
 
 ## Results
 
@@ -94,6 +113,7 @@ The Docker image pins R 4.6.1 and Bioconductor 3.23. Rebuilding the image after 
 ## Repository structure
 
 ```
+├── .github/workflows/          # builds and publishes the Docker image
 ├── Dockerfile                  # pinned R/Bioconductor environment
 ├── docker/install_packages.R   # package list; the build fails if any is missing
 ├── config/
