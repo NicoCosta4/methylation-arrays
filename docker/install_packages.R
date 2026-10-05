@@ -5,6 +5,8 @@
 pkgs <- c(
   # data download and core analysis
   "GEOquery", "minfi", "limma",
+  # one-off download of the cross-reactive probe list (scripts/fetch_reference_lists.R)
+  "ExperimentHub",
   # EPIC v1 (hg19) and EPICv2 (hg38) manifests + annotations
   "IlluminaHumanMethylationEPICmanifest",
   "IlluminaHumanMethylationEPICanno.ilm10b4.hg19",
