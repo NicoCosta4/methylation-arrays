@@ -16,6 +16,9 @@ tar_is_complete <- function(path) {
     !inherits(tryCatch(untar(path, list = TRUE), error = identity, warning = identity), "condition")
 }
 
+# getGEOSuppFiles() creates data/<GSE>/ but not its parent: create it on a fresh clone
+dir.create(dirname(tar_path), recursive = TRUE, showWarnings = FALSE)
+
 if (file.exists(tar_path) && !tar_is_complete(tar_path)) {
   message("Removing incomplete download: ", tar_path)
   unlink(tar_path)
